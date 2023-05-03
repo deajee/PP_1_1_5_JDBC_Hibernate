@@ -29,14 +29,13 @@ public class Util {
         try {
             Configuration configuration = new Configuration();
             configuration.setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
-            configuration.setProperty("hibernate.connection.url",
-                    "jdbc:mysql://localhost:3306/usersdb?useUnicode=true&characterEncoding=utf8");
-            configuration.setProperty("hibernate.connection.username", "root");
-            configuration.setProperty("hibernate.connection.password", "root");
+            configuration.setProperty("hibernate.connection.url", DB_URL);
+            configuration.setProperty("hibernate.connection.username", DB_USERNAME);
+            configuration.setProperty("hibernate.connection.password", DB_PASSWORD);
             configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
             configuration.setProperty("hibernate.current_session_context_class", "thread");
             configuration.setProperty("hibernate.show_sql", "true");
-            configuration.addAnnotatedClass(User.class); // Добавьте классы, которые должны быть отображены в базе данных
+            configuration.addAnnotatedClass(User.class);
             return configuration.buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create SessionFactory " + ex);
